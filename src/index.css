@@ -1,0 +1,60 @@
+/* Ensure full height inheritance */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.leaflet-container {
+  height: 100% !important;
+  width: 100% !important;
+  min-height: 100vh;
+}
+
+.leaflet-control-zoom {
+  display: none;
+}
+
+/* Ensure attribution is visible above iOS/Android safe areas */
+.leaflet-bottom {
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
+}
+.leaflet-top {
+  top: calc(env(safe-area-inset-top, 0px) + 8px);
+}
+.leaflet-right {
+  right: calc(env(safe-area-inset-right, 0px) + 8px);
+}
+/* Also account for left safe area when using bottom-left position */
+.leaflet-left {
+  left: calc(env(safe-area-inset-left, 0px) + 8px);
+}
+/* Keep controls above vector layers */
+.leaflet-control-container {
+  z-index: 1001;
+}
+
+/* Default (desktop/tablet): normal positioning */
+.leaflet-control-attribution {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: static !important;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+/* Small screens: fix to viewport with safe-area offsets */
+@media (max-width: 768px) {
+  .leaflet-control-attribution {
+    position: fixed !important;
+    left: calc(env(safe-area-inset-left, 0px) + 8px) !important;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 8px) !important;
+    right: auto !important;
+    top: auto !important;
+    font-size: 11px;
+  }
+}
