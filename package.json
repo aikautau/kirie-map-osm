@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "build:view": "VITE_APP_MODE=view vite build --base=./ --outDir=dist/view",
     "build:admin": "VITE_APP_MODE=admin vite build --base=./ --outDir=dist/admin",
+    "build:pages": "VITE_APP_MODE=view vite build --base=/kirie-map-osm/",
     "lint": "eslint .",
     "preview": "vite preview"
   },
