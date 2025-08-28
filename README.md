@@ -17,12 +17,14 @@
 
 ## デモサイト
 
-### 閲覧用（一般公開）
-[https://your-domain.com](https://your-domain.com)
+### 閲覧用（GitHub Pages）
+[https://aikautau.github.io/kirie-map-osm/](https://aikautau.github.io/kirie-map-osm/)
 
-### 管理者用（認証保護）
-[https://your-domain.com/admin](https://your-domain.com/admin)
-※ 管理者用はBasic認証で保護されています
+### 本番サイト例（参考）
+- 閲覧用: https://aikautau.xii.jp
+- 管理者用: https://aikautau.xii.jp/admin （Basic認証保護）
+
+※ GitHub Pagesはデモ・技術紹介用です
 
 ## 技術スタック
 
