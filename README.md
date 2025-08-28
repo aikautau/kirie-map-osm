@@ -65,26 +65,25 @@
 - **自動スクロール**: 地図選択時のサイドバー自動展開・スクロール
 - **パフォーマンス最適化**: 大量データ（1000件+）への対応準備
 
-## セットアップ
+## 使用方法
 
-### 1. 依存関係のインストール
+このリポジトリをクローンして、ローカル環境で動作確認できます：
+
 ```bash
+git clone https://github.com/aikautau/kirie-map-osm.git
+cd kirie-map-osm
 npm install
-```
-
-### 2. 開発サーバー起動
-```bash
 npm run dev
 ```
 
-ブラウザで http://localhost:5173 にアクセスして動作確認できます。
+ブラウザで http://localhost:5173 にアクセスすると開発版が表示されます。
 
-### 3. ビルド
+### 本番ビルド
 ```bash
-# 閲覧用ビルド
+# 閲覧用サイト
 npm run build:view
 
-# 管理者用ビルド  
+# 管理者用サイト
 npm run build:admin
 ```
 
@@ -125,14 +124,6 @@ VITE_APP_MODE=admin   # 管理者用
 export const DEFAULT_MAP_CENTER: [number, number] = [35.681236, 139.767125];
 export const DEFAULT_MAP_ZOOM = 13;
 ```
-
-## 今後の拡張予定
-
-- [ ] 空間インデックス（RBush）による高速検索
-- [ ] 仮想リスト（react-window）による大量データ対応
-- [ ] PWA対応（オフライン機能）
-- [ ] GeoJSON形式でのエクスポート
-- [ ] 他の地図タイルサービス対応
 
 ## ライセンス
 
