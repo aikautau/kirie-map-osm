@@ -519,28 +519,20 @@ const Sidebar: React.FC<SidebarProps> = ({
           )}
 
           {appMode === 'admin' && isAdding && (
-            <>
-              <div className="p-4 bg-gray-700/50 backdrop-blur-sm rounded-lg mt-4">
-              </div>
-              <AddRecordForm 
-                onAdd={onAddRecord}
-                onCancel={onCancelAdding}
-                isAreaSelected={!!currentMapBounds}
-              />
-            </>
+            <AddRecordForm 
+              onAdd={onAddRecord}
+              onCancel={onCancelAdding}
+              isAreaSelected={!!currentMapBounds}
+            />
           )}
 
           {appMode === 'admin' && isEditing && editingRecordId && (
-            <>
-              <div className="p-4 bg-gray-700/50 backdrop-blur-sm rounded-lg mt-4">
-              </div>
-              <EditRecordForm 
-                record={records.find(r => r.id === editingRecordId)!}
-                onUpdate={onUpdateRecord}
-                onCancel={onCancelEditing}
-                isAreaSelected={!!currentMapBounds}
-              />
-            </>
+            <EditRecordForm 
+              record={records.find(r => r.id === editingRecordId)!}
+              onUpdate={onUpdateRecord}
+              onCancel={onCancelEditing}
+              isAreaSelected={!!currentMapBounds}
+            />
           )}
 
           {/* Sorting controls for both view and admin */}
