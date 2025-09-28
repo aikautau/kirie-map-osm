@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import L, { type LatLngBounds, type LatLngBoundsExpression } from 'leaflet';
 import MapComponent from './components/MapComponent';
 import Sidebar from './components/Sidebar';
-import { DEFAULT_MAP_CENTER, DEFAULT_MAP_ZOOM, LOCAL_STORAGE_KEY } from './constants';
+import { LOCAL_STORAGE_KEY } from './constants';
 import type { MapRecord } from './types';
 
 const App: React.FC = () => {

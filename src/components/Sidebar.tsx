@@ -169,7 +169,7 @@ const EditRecordForm: React.FC<{
   onUpdate: (title: string, year?: string, address?: string, regionType?: 'domestic'|'overseas', prefecture?: string, countryCode?: string, mapNumber?: number, mapNumberText?: string) => void; 
   onCancel: () => void; 
   isAreaSelected: boolean; 
-}> = ({ record, onUpdate, onCancel, isAreaSelected }) => {
+}> = ({ record, onUpdate, onCancel }) => {
   const [title, setTitle] = useState(record.title || '');
   const [yearStr, setYearStr] = useState<string>(record.createdAt || String(new Date().getFullYear()));
   const [address, setAddress] = useState<string>((record as any).address || '');
@@ -531,7 +531,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               record={records.find(r => r.id === editingRecordId)!}
               onUpdate={onUpdateRecord}
               onCancel={onCancelEditing}
-              isAreaSelected={!!currentMapBounds}
+              isAreaSelected={true}
             />
           )}
 
