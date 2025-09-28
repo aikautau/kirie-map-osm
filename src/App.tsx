@@ -11,6 +11,8 @@ const App: React.FC = () => {
   const [activeRecordId, setActiveRecordId] = useState<string | null>(null);
   const [currentMapBounds, setCurrentMapBounds] = useState<LatLngBoundsExpression | null>(null);
   const [isAdding, setIsAdding] = useState<boolean>(false);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [editingRecordId, setEditingRecordId] = useState<string | null>(null);
   const appMode = import.meta.env.VITE_APP_MODE || 'admin';
   const [selectedFrameType, setSelectedFrameType] = useState<FrameType>('none');
   const [fixedFrameScale, setFixedFrameScale] = useState<number>(1);
@@ -139,6 +141,63 @@ const App: React.FC = () => {
     setIsAdding(false);
   };
 
+  const handleStartEditing = (recordId: string) => {
+    if (appMode !== 'admin') return;
+    const record = records.find(r => r.id === recordId);
+    if (record) {
+      setEditingRecordId(recordId);
+      setActiveRecordId(recordId);
+      setCurrentMapBounds(record.bounds);
+      setIsEditing(true);
+      setIsAdding(false);
+      // Default to fixed-frame for editing
+      setSelectedFrameType('square_7_5cm');
+      setFixedFrameScale(1);
+    }
+  };
+
+  const handleCancelEditing = () => {
+    setIsEditing(false);
+    setEditingRecordId(null);
+    setCurrentMapBounds(null);
+  };
+
+  const handleUpdateRecord = (
+    title: string,
+    year?: string,
+    address?: string,
+    regionType?: 'domestic'|'overseas',
+    prefecture?: string,
+    countryCode?: string,
+    mapNumber?: number,
+    mapNumberText?: string
+  ) => {
+    if (appMode !== 'admin' || !editingRecordId) return;
+    
+    const updatedRecords = records.map(record => {
+      if (record.id === editingRecordId) {
+        return {
+          ...record,
+          title,
+          createdAt: year || record.createdAt,
+          bounds: currentMapBounds || record.bounds,
+          address,
+          regionType,
+          prefecture,
+          countryCode,
+          mapNumber,
+          mapNumberText,
+        };
+      }
+      return record;
+    });
+    
+    setRecords(updatedRecords);
+    saveRecordsToLocalStorage(updatedRecords);
+    setIsEditing(false);
+    setEditingRecordId(null);
+  };
+
   const handleExport = () => {
     const blob = new Blob([JSON.stringify({ records }, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -164,6 +223,11 @@ const App: React.FC = () => {
         onStartAdding={handleStartAdding}
         onCancelAdding={handleCancelAdding}
         isAdding={isAdding}
+        isEditing={isEditing}
+        editingRecordId={editingRecordId}
+        onStartEditing={handleStartEditing}
+        onCancelEditing={handleCancelEditing}
+        onUpdateRecord={handleUpdateRecord}
         currentMapBounds={currentMapBounds}
         appMode={appMode}
         onExport={handleExport}
@@ -179,7 +243,7 @@ const App: React.FC = () => {
           activeRecordId={activeRecordId}
           onSelectRecord={handleSelectRecordFromMap}
           onBoundsChange={handleBoundsChange}
-          isAdding={appMode === 'admin' ? isAdding : false}
+          isAdding={appMode === 'admin' ? (isAdding || isEditing) : false}
           currentMapBounds={currentMapBounds}
           selectedFrameType={selectedFrameType}
           fixedFrameScale={fixedFrameScale}

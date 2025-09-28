@@ -27,43 +27,53 @@ const toLeafletBounds = (raw: any): L.LatLngBounds | null => {
   }
 };
 
-// Fixed frame helper component
-const FixedFrame: React.FC<{ onBoundsChange: (b: LatLngBounds | null) => void; frameType: 'square_7_5cm' | 'rect_10x15cm'; scale?: number }> = ({ onBoundsChange, frameType, scale = 1 }) => {
+// Fixed frame overlay (mapframe-printer style) - Frame stays in center, map moves underneath
+const FixedFrameOverlay: React.FC<{ onBoundsChange: (b: LatLngBounds | null) => void; frameType: 'square_7_5cm' | 'rect_10x15cm'; scale?: number }> = ({ onBoundsChange, frameType, scale = 1 }) => {
   const map = useMap();
-  const [center, setCenter] = useState<L.LatLng | null>(null);
-  useEffect(() => {
-    if (!center) setCenter(map.getCenter());
-  }, [map, center]);
-
-  useMapEvents({
-    mousedown(e) {
-      setCenter(e.latlng);
-    },
-    mousemove(e) {
-      if (e.originalEvent.buttons === 1) setCenter(e.latlng);
-    },
-  });
-
-  const bounds = useMemo(() => {
-    if (!center) return null;
+  
+  const recompute = useCallback(() => {
+    const center = map.getCenter();
     const base = FRAME_PIXEL_SIZES[frameType];
     const size = { width: base.width * scale, height: base.height * scale };
     const cp = map.latLngToContainerPoint(center);
     const nw = map.containerPointToLatLng(cp.subtract([size.width / 2, size.height / 2]));
     const se = map.containerPointToLatLng(cp.add([size.width / 2, size.height / 2]));
-    return L.latLngBounds(nw, se);
-  }, [center, frameType, map, scale]);
+    const b = L.latLngBounds(nw, se);
+    onBoundsChange(b);
+  }, [frameType, map, onBoundsChange, scale]);
 
   useEffect(() => {
-    if (bounds) onBoundsChange(bounds);
-  }, [bounds, onBoundsChange]);
+    recompute();
+  }, [recompute]);
 
-  if (!bounds) return null;
+  useMapEvents({
+    move: () => recompute(),
+    zoom: () => recompute(),
+    resize: () => recompute(),
+  } as any);
+
+  useEffect(() => {
+    recompute();
+  }, [frameType, scale, recompute]);
+
+  const base = FRAME_PIXEL_SIZES[frameType];
+  const size = { width: base.width * scale, height: base.height * scale };
+
   return (
-    <Rectangle
-      bounds={bounds}
-      pathOptions={{ color: '#3b82f6', fill: false, weight: 3 }}
-    />
+    <div className="pointer-events-none absolute inset-0 z-[1000] flex items-center justify-center">
+      {/* Simple frame with border */}
+      <div
+        className="border-4 border-blue-500 bg-transparent"
+        style={{ 
+          width: `${size.width}px`, 
+          height: `${size.height}px`
+        }}
+      >
+        {/* Center crosshair */}
+        <div className="absolute top-1/2 left-1/2 w-4 h-0.5 bg-blue-500 transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute top-1/2 left-1/2 w-0.5 h-4 bg-blue-500 transform -translate-x-1/2 -translate-y-1/2"></div>
+      </div>
+    </div>
   );
 };
 
@@ -181,14 +191,11 @@ const MapInternalLogic: React.FC<MapInternalLogicProps> = ({
   selectedFrameType = 'none',
   fixedFrameScale = 1
 }) => {
-  const map = useMap();
   const activeRecord = useMemo(() => records.find(r => r.id === activeRecordId), [records, activeRecordId]);
   const activeBounds = useMemo(() => {
     const rec = records.find(r => r.id === activeRecordId);
     return rec ? toLeafletBounds(rec.bounds as any) : null;
   }, [activeRecordId, records]);
-
-  const getCenter = (bounds: L.LatLngBounds): L.LatLng => bounds.getCenter();
 
   // Overlap handling: gather candidates at a point, show chooser if multiple
   const [candidateRecords, setCandidateRecords] = useState<Array<{ record: MapRecord; bounds: L.LatLngBounds; areaSize: number }>>([]);
@@ -242,14 +249,18 @@ const MapInternalLogic: React.FC<MapInternalLogicProps> = ({
               weight: activeRecordId === record.id ? 3 : 2,
             }}
             eventHandlers={{
-              click: (e) => handleSelectAtLatLng((e as any).latlng),
-              touchstart: (e) => handleSelectAtLatLng((e as any).latlng)
+              click: (e) => handleSelectAtLatLng((e as any).latlng)
             }}
           />
         );
       })}
       
-      {activeRecord && activeBounds && (
+      {activeRecord && activeBounds && !isAdding && (
+        <ChangeView bounds={activeBounds as L.LatLngBounds} />
+      )}
+      
+      {/* Move to record location when starting to edit */}
+      {isAdding && activeRecord && activeBounds && (
         <ChangeView bounds={activeBounds as L.LatLngBounds} />
       )}
 
@@ -267,7 +278,7 @@ const MapInternalLogic: React.FC<MapInternalLogicProps> = ({
       {isAdding && selectedFrameType === 'none' && <RectangleDrawer onBoundsChange={onBoundsChange} />}
 
       {isAdding && selectedFrameType !== 'none' && (
-        <FixedFrame onBoundsChange={onBoundsChange} frameType={selectedFrameType} scale={fixedFrameScale} />
+        <FixedFrameOverlay onBoundsChange={onBoundsChange} frameType={selectedFrameType} scale={fixedFrameScale} />
       )}
 
       {isAdding && (
@@ -275,7 +286,9 @@ const MapInternalLogic: React.FC<MapInternalLogicProps> = ({
           <div className="flex items-center gap-2">
             <PinIcon className="w-5 h-5" />
             <span>
-              {selectedFrameType === 'none' ? 'Click and drag on the map to select an area.' : 'Drag the frame to position it, then save.'}
+              {selectedFrameType === 'none' 
+                ? 'Click and drag on the map to select an area.' 
+                : 'Pan and zoom the map to position the area within the frame, then save.'}
             </span>
           </div>
         </div>

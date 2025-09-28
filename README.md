@@ -56,6 +56,8 @@
 
 ### 管理者用
 - 地図範囲の追加・編集・削除
+- **記録編集機能**: 既存記録の修正（制作中→完成、数値修正、範囲調整等）
+- **固定フレーム操作**: 画面中央の固定枠に地図を合わせる直感的操作
 - フリードローイング・固定サイズ枠での範囲選択
 - 制作情報の管理（年、住所、番号等）
 - データのJSON形式エクスポート
@@ -63,6 +65,8 @@
 ### 技術的工夫
 - **重なり選択UI**: 複数の範囲が重なる場合の候補選択機能
 - **自動スクロール**: 地図選択時のサイドバー自動展開・スクロール
+- **記録編集システム**: 既存データの柔軟な修正・更新機能
+- **固定フレームUI**: mapframe-printer風の直感的な範囲選択操作
 - **パフォーマンス最適化**: 大量データ（1000件+）への対応準備
 
 ## 使用方法
@@ -113,9 +117,9 @@ VITE_APP_MODE=admin   # 管理者用
 ### 1. 個人情報の設定
 `index.html` の以下の箇所を編集：
 ```html
-<meta name="author" content="あなたの作家名" />
+<meta name="author" content="Your Artist Name" />
 <meta property="og:url" content="https://your-domain.com" />
-<meta name="twitter:creator" content="@your-twitter" />
+<meta name="twitter:creator" content="@your-twitter-handle" />
 ```
 
 ### 2. 地図の初期位置
