@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import type { LatLngBounds, LatLngBoundsExpression } from 'leaflet';
+import L, { type LatLngBounds, type LatLngBoundsExpression } from 'leaflet';
 import MapComponent from './components/MapComponent';
 import Sidebar from './components/Sidebar';
 import { DEFAULT_MAP_CENTER, DEFAULT_MAP_ZOOM, LOCAL_STORAGE_KEY } from './constants';
 import type { MapRecord } from './types';
-import type { FrameType } from './types';
 
 const App: React.FC = () => {
   const [records, setRecords] = useState<MapRecord[]>([]);
@@ -14,8 +13,6 @@ const App: React.FC = () => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [editingRecordId, setEditingRecordId] = useState<string | null>(null);
   const appMode = import.meta.env.VITE_APP_MODE || 'admin';
-  const [selectedFrameType, setSelectedFrameType] = useState<FrameType>('none');
-  const [fixedFrameScale, setFixedFrameScale] = useState<number>(1);
   const [fromMapSelection, setFromMapSelection] = useState<boolean>(false);
 
   useEffect(() => {
@@ -85,11 +82,25 @@ const App: React.FC = () => {
       alert("Please select an area on the map first.");
       return;
     }
+    
+    // Normalize bounds to consistent format for saving
+    let normalizedBounds: LatLngBoundsExpression;
+    if (currentMapBounds instanceof L.LatLngBounds) {
+      // Convert LatLngBounds to consistent array format
+      normalizedBounds = [
+        [currentMapBounds.getSouth(), currentMapBounds.getWest()],
+        [currentMapBounds.getNorth(), currentMapBounds.getEast()]
+      ];
+      
+    } else {
+      normalizedBounds = currentMapBounds;
+    }
+    
     const newRecord: MapRecord = {
       id: crypto.randomUUID(),
       title,
       createdAt: year || String(new Date().getFullYear()),
-      bounds: currentMapBounds,
+      bounds: normalizedBounds,
       address,
       regionType,
       prefecture,
@@ -133,8 +144,6 @@ const App: React.FC = () => {
     setActiveRecordId(null);
     setCurrentMapBounds(null); // Reset bounds to force user to draw a new one
     setIsAdding(true);
-    setSelectedFrameType('none');
-    setFixedFrameScale(1);
   };
 
   const handleCancelAdding = () => {
@@ -150,9 +159,6 @@ const App: React.FC = () => {
       setCurrentMapBounds(record.bounds);
       setIsEditing(true);
       setIsAdding(false);
-      // Default to fixed-frame for editing
-      setSelectedFrameType('square_7_5cm');
-      setFixedFrameScale(1);
     }
   };
 
@@ -174,13 +180,22 @@ const App: React.FC = () => {
   ) => {
     if (appMode !== 'admin' || !editingRecordId) return;
     
+    // Normalize bounds if updating with new bounds
+    let boundsToSave = currentMapBounds;
+    if (currentMapBounds && currentMapBounds instanceof L.LatLngBounds) {
+      boundsToSave = [
+        [currentMapBounds.getSouth(), currentMapBounds.getWest()],
+        [currentMapBounds.getNorth(), currentMapBounds.getEast()]
+      ];
+    }
+    
     const updatedRecords = records.map(record => {
       if (record.id === editingRecordId) {
         return {
           ...record,
           title,
           createdAt: year || record.createdAt,
-          bounds: currentMapBounds || record.bounds,
+          bounds: boundsToSave || record.bounds,
           address,
           regionType,
           prefecture,
@@ -231,10 +246,6 @@ const App: React.FC = () => {
         currentMapBounds={currentMapBounds}
         appMode={appMode}
         onExport={handleExport}
-        selectedFrameType={selectedFrameType}
-        onSelectFrameType={setSelectedFrameType}
-        fixedFrameScale={fixedFrameScale}
-        onChangeFixedFrameScale={setFixedFrameScale}
         fromMapSelection={fromMapSelection}
       />
       <main className="flex-1 h-full w-full">
@@ -245,8 +256,6 @@ const App: React.FC = () => {
           onBoundsChange={handleBoundsChange}
           isAdding={appMode === 'admin' ? (isAdding || isEditing) : false}
           currentMapBounds={currentMapBounds}
-          selectedFrameType={selectedFrameType}
-          fixedFrameScale={fixedFrameScale}
         />
       </main>
     </div>

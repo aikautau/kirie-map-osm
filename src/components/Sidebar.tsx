@@ -21,10 +21,6 @@ interface SidebarProps {
   currentMapBounds: LatLngBoundsExpression | null;
   appMode: string;
   onExport: () => void;
-  selectedFrameType?: 'none' | 'square_7_5cm' | 'rect_10x15cm';
-  onSelectFrameType?: (type: 'none' | 'square_7_5cm' | 'rect_10x15cm') => void;
-  fixedFrameScale?: number;
-  onChangeFixedFrameScale?: (n: number) => void;
   fromMapSelection?: boolean;
 }
 
@@ -327,10 +323,6 @@ const Sidebar: React.FC<SidebarProps> = ({
   currentMapBounds,
   appMode,
   onExport,
-  selectedFrameType = 'none',
-  onSelectFrameType,
-  fixedFrameScale = 1,
-  onChangeFixedFrameScale,
   fromMapSelection = false
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -529,44 +521,6 @@ const Sidebar: React.FC<SidebarProps> = ({
           {appMode === 'admin' && isAdding && (
             <>
               <div className="p-4 bg-gray-700/50 backdrop-blur-sm rounded-lg mt-4">
-                <h3 className="text-lg font-semibold text-white mb-2">範囲の決め方</h3>
-                <div className="grid grid-cols-1 gap-2">
-                  <button
-                    onClick={() => onSelectFrameType && onSelectFrameType('none')}
-                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${selectedFrameType === 'none' ? 'bg-blue-500 text-white' : 'bg-gray-600 text-gray-300 hover:bg-gray-500'}`}
-                  >
-                    フリードローイング
-                  </button>
-                  <button
-                    onClick={() => onSelectFrameType && onSelectFrameType('square_7_5cm')}
-                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${selectedFrameType === 'square_7_5cm' ? 'bg-blue-500 text-white' : 'bg-gray-600 text-gray-300 hover:bg-gray-500'}`}
-                  >
-                    正方形
-                  </button>
-                  <button
-                    onClick={() => onSelectFrameType && onSelectFrameType('rect_10x15cm')}
-                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${selectedFrameType === 'rect_10x15cm' ? 'bg-blue-500 text-white' : 'bg-gray-600 text-gray-300 hover:bg-gray-500'}`}
-                  >
-                    横長長方形（15×10）
-                  </button>
-                </div>
-                {selectedFrameType !== 'none' && (
-                  <div className="mt-3">
-                    <label className="block text-sm text-gray-300 mb-1">フレーム倍率（微調整）</label>
-                    <input
-                      type="range"
-                      min={0.5}
-                      max={2}
-                      step={0.1}
-                      value={fixedFrameScale}
-                      onChange={(e) => onChangeFixedFrameScale && onChangeFixedFrameScale(Number(e.target.value))}
-                      className="w-full"
-                    />
-                    <div className="text-xs text-gray-400 mt-1">
-                      {fixedFrameScale}x
-                    </div>
-                  </div>
-                )}
               </div>
               <AddRecordForm 
                 onAdd={onAddRecord}
@@ -579,44 +533,6 @@ const Sidebar: React.FC<SidebarProps> = ({
           {appMode === 'admin' && isEditing && editingRecordId && (
             <>
               <div className="p-4 bg-gray-700/50 backdrop-blur-sm rounded-lg mt-4">
-                <h3 className="text-lg font-semibold text-white mb-2">範囲の決め方</h3>
-                <div className="grid grid-cols-1 gap-2">
-                  <button
-                    onClick={() => onSelectFrameType && onSelectFrameType('none')}
-                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${selectedFrameType === 'none' ? 'bg-blue-500 text-white' : 'bg-gray-600 text-gray-300 hover:bg-gray-500'}`}
-                  >
-                    フリードローイング
-                  </button>
-                  <button
-                    onClick={() => onSelectFrameType && onSelectFrameType('square_7_5cm')}
-                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${selectedFrameType === 'square_7_5cm' ? 'bg-blue-500 text-white' : 'bg-gray-600 text-gray-300 hover:bg-gray-500'}`}
-                  >
-                    正方形
-                  </button>
-                  <button
-                    onClick={() => onSelectFrameType && onSelectFrameType('rect_10x15cm')}
-                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${selectedFrameType === 'rect_10x15cm' ? 'bg-blue-500 text-white' : 'bg-gray-600 text-gray-300 hover:bg-gray-500'}`}
-                  >
-                    横長長方形（15×10）
-                  </button>
-                </div>
-                {selectedFrameType !== 'none' && (
-                  <div className="mt-3">
-                    <label className="block text-sm text-gray-300 mb-1">フレーム倍率（微調整）</label>
-                    <input
-                      type="range"
-                      min={0.5}
-                      max={2}
-                      step={0.1}
-                      value={fixedFrameScale}
-                      onChange={(e) => onChangeFixedFrameScale && onChangeFixedFrameScale(Number(e.target.value))}
-                      className="w-full"
-                    />
-                    <div className="text-xs text-gray-400 mt-1">
-                      {fixedFrameScale}x
-                    </div>
-                  </div>
-                )}
               </div>
               <EditRecordForm 
                 record={records.find(r => r.id === editingRecordId)!}

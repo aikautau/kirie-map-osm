@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useState, useCallback } from 'react';
 import { MapContainer, TileLayer, Rectangle, useMap, useMapEvents } from 'react-leaflet';
-import L, { type LatLng, type LatLngBounds, type LatLngBoundsExpression } from 'leaflet';
+import L, { type LatLngBounds, type LatLngBoundsExpression } from 'leaflet';
 import type { MapRecord } from '../types';
-import { DEFAULT_MAP_CENTER, DEFAULT_MAP_ZOOM, FRAME_PIXEL_SIZES } from '../constants';
+import { DEFAULT_MAP_CENTER, DEFAULT_MAP_ZOOM } from '../constants';
 import { PinIcon } from './Icons';
 
 // Helper placed at top-level so it is defined before any usage
@@ -27,55 +27,6 @@ const toLeafletBounds = (raw: any): L.LatLngBounds | null => {
   }
 };
 
-// Fixed frame overlay (mapframe-printer style) - Frame stays in center, map moves underneath
-const FixedFrameOverlay: React.FC<{ onBoundsChange: (b: LatLngBounds | null) => void; frameType: 'square_7_5cm' | 'rect_10x15cm'; scale?: number }> = ({ onBoundsChange, frameType, scale = 1 }) => {
-  const map = useMap();
-  
-  const recompute = useCallback(() => {
-    const center = map.getCenter();
-    const base = FRAME_PIXEL_SIZES[frameType];
-    const size = { width: base.width * scale, height: base.height * scale };
-    const cp = map.latLngToContainerPoint(center);
-    const nw = map.containerPointToLatLng(cp.subtract([size.width / 2, size.height / 2]));
-    const se = map.containerPointToLatLng(cp.add([size.width / 2, size.height / 2]));
-    const b = L.latLngBounds(nw, se);
-    onBoundsChange(b);
-  }, [frameType, map, onBoundsChange, scale]);
-
-  useEffect(() => {
-    recompute();
-  }, [recompute]);
-
-  useMapEvents({
-    move: () => recompute(),
-    zoom: () => recompute(),
-    resize: () => recompute(),
-  } as any);
-
-  useEffect(() => {
-    recompute();
-  }, [frameType, scale, recompute]);
-
-  const base = FRAME_PIXEL_SIZES[frameType];
-  const size = { width: base.width * scale, height: base.height * scale };
-
-  return (
-    <div className="pointer-events-none absolute inset-0 z-[1000] flex items-center justify-center">
-      {/* Simple frame with border */}
-      <div
-        className="border-4 border-blue-500 bg-transparent"
-        style={{ 
-          width: `${size.width}px`, 
-          height: `${size.height}px`
-        }}
-      >
-        {/* Center crosshair */}
-        <div className="absolute top-1/2 left-1/2 w-4 h-0.5 bg-blue-500 transform -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute top-1/2 left-1/2 w-0.5 h-4 bg-blue-500 transform -translate-x-1/2 -translate-y-1/2"></div>
-      </div>
-    </div>
-  );
-};
 
 interface MapEventsProps {
   onBoundsChange: (bounds: LatLngBounds) => void;
@@ -177,8 +128,6 @@ interface MapInternalLogicProps {
   onBoundsChange: (bounds: LatLngBounds | null) => void;
   isAdding: boolean;
   currentMapBounds: LatLngBoundsExpression | null;
-  selectedFrameType?: 'none' | 'square_7_5cm' | 'rect_10x15cm';
-  fixedFrameScale?: number;
 }
 
 const MapInternalLogic: React.FC<MapInternalLogicProps> = ({ 
@@ -187,9 +136,7 @@ const MapInternalLogic: React.FC<MapInternalLogicProps> = ({
   onSelectRecord,
   onBoundsChange, 
   isAdding, 
-  currentMapBounds,
-  selectedFrameType = 'none',
-  fixedFrameScale = 1
+  currentMapBounds
 }) => {
   const activeRecord = useMemo(() => records.find(r => r.id === activeRecordId), [records, activeRecordId]);
   const activeBounds = useMemo(() => {
@@ -238,6 +185,7 @@ const MapInternalLogic: React.FC<MapInternalLogicProps> = ({
         if (!b) return null;
         const isInProgress = (record as any).mapNumberText && String((record as any).mapNumberText).includes('制作中');
         
+        
         return (
           <Rectangle
             key={record.id}
@@ -264,7 +212,7 @@ const MapInternalLogic: React.FC<MapInternalLogicProps> = ({
         <ChangeView bounds={activeBounds as L.LatLngBounds} />
       )}
 
-      {isAdding && selectedFrameType === 'none' && currentMapBounds && (
+      {isAdding && currentMapBounds && (
         <Rectangle
           bounds={L.latLngBounds(currentMapBounds as any)}
           pathOptions={{
@@ -275,20 +223,15 @@ const MapInternalLogic: React.FC<MapInternalLogicProps> = ({
         />
       )}
 
-      {isAdding && selectedFrameType === 'none' && <RectangleDrawer onBoundsChange={onBoundsChange} />}
+      {isAdding && <RectangleDrawer onBoundsChange={onBoundsChange} />}
 
-      {isAdding && selectedFrameType !== 'none' && (
-        <FixedFrameOverlay onBoundsChange={onBoundsChange} frameType={selectedFrameType} scale={fixedFrameScale} />
-      )}
 
       {isAdding && (
         <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[1000] bg-blue-600 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-lg pointer-events-none">
           <div className="flex items-center gap-2">
             <PinIcon className="w-5 h-5" />
             <span>
-              {selectedFrameType === 'none' 
-                ? 'Click and drag on the map to select an area.' 
-                : 'Pan and zoom the map to position the area within the frame, then save.'}
+              'Click and drag on the map to select an area.'
             </span>
           </div>
         </div>
@@ -338,8 +281,6 @@ interface MapComponentProps {
   onBoundsChange: (bounds: LatLngBounds | null) => void;
   isAdding: boolean;
   currentMapBounds: LatLngBoundsExpression | null;
-  selectedFrameType?: 'none' | 'square_7_5cm' | 'rect_10x15cm';
-  fixedFrameScale?: number;
 }
 
 const MapComponent: React.FC<MapComponentProps> = ({ 
@@ -348,9 +289,7 @@ const MapComponent: React.FC<MapComponentProps> = ({
   onSelectRecord,
   onBoundsChange, 
   isAdding, 
-  currentMapBounds, 
-  selectedFrameType = 'none',
-  fixedFrameScale = 1
+  currentMapBounds
 }) => {
   return (
     <MapContainer 
@@ -364,16 +303,14 @@ const MapComponent: React.FC<MapComponentProps> = ({
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <MapInternalLogic
-        records={records}
-        activeRecordId={activeRecordId}
-        onSelectRecord={onSelectRecord}
-        onBoundsChange={onBoundsChange}
-        isAdding={isAdding}
-        currentMapBounds={currentMapBounds}
-        selectedFrameType={selectedFrameType}
-        fixedFrameScale={fixedFrameScale}
-      />
+        <MapInternalLogic 
+          records={records} 
+          activeRecordId={activeRecordId} 
+          onSelectRecord={onSelectRecord}
+          onBoundsChange={onBoundsChange} 
+          isAdding={isAdding} 
+          currentMapBounds={currentMapBounds}
+        />
     </MapContainer>
   );
 };

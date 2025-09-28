@@ -11,4 +11,3 @@ export interface MapRecord {
   countryCode?: string;
 }
 
-export type FrameType = 'none' | 'square_7_5cm' | 'rect_10x15cm';

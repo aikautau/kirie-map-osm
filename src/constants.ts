@@ -3,10 +3,6 @@ export const LOCAL_STORAGE_KEY = "mapHistoryRecords";
 export const DEFAULT_MAP_CENTER: [number, number] = [35.681236, 139.767125]; // Tokyo Station
 export const DEFAULT_MAP_ZOOM = 13;
 
-export const FRAME_PIXEL_SIZES = {
-  square_7_5cm: { width: 200, height: 200 }, // Square frame (adjustable size)
-  rect_10x15cm: { width: 567, height: 378 }, // Landscape 15cm x 10cm at 96 DPI
-};
 
 export const PREFECTURES = [
   '北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県',
