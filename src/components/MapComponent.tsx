@@ -164,6 +164,7 @@ interface MapInternalLogicProps {
   onBoundsChange: (bounds: LatLngBounds | null) => void;
   isAdding: boolean;
   currentMapBounds: LatLngBoundsExpression | null;
+  onVisibleCountChange?: (count: number) => void;
 }
 
 const MapInternalLogic: React.FC<MapInternalLogicProps> = ({ 
@@ -172,13 +173,64 @@ const MapInternalLogic: React.FC<MapInternalLogicProps> = ({
   onSelectRecord,
   onBoundsChange, 
   isAdding, 
-  currentMapBounds
+  currentMapBounds,
+  onVisibleCountChange
 }) => {
+  const map = useMap();
+  const [visibleBounds, setVisibleBounds] = useState<L.LatLngBounds | null>(null);
+  
   const activeRecord = useMemo(() => records.find(r => r.id === activeRecordId), [records, activeRecordId]);
   const activeBounds = useMemo(() => {
     const rec = records.find(r => r.id === activeRecordId);
     return rec ? toLeafletBounds(rec.bounds as any) : null;
   }, [activeRecordId, records]);
+
+  // Update visible bounds when map moves
+  useEffect(() => {
+    const updateBounds = () => {
+      setVisibleBounds(map.getBounds());
+    };
+    
+    updateBounds();
+    map.on('moveend', updateBounds);
+    map.on('zoomend', updateBounds);
+    
+    return () => {
+      map.off('moveend', updateBounds);
+      map.off('zoomend', updateBounds);
+    };
+  }, [map]);
+
+  // Filter records to only those visible in current map bounds (with padding)
+  const visibleRecords = useMemo(() => {
+    if (!visibleBounds) return records;
+    
+    // Add padding to bounds (20% on each side) to pre-render nearby rectangles
+    const sw = visibleBounds.getSouthWest();
+    const ne = visibleBounds.getNorthEast();
+    const latPadding = (ne.lat - sw.lat) * 0.2;
+    const lngPadding = (ne.lng - sw.lng) * 0.2;
+    
+    const paddedBounds = L.latLngBounds(
+      [sw.lat - latPadding, sw.lng - lngPadding],
+      [ne.lat + latPadding, ne.lng + lngPadding]
+    );
+    
+    return records.filter(record => {
+      const bounds = toLeafletBounds(record.bounds as any);
+      if (!bounds) return false;
+      
+      // Check if record bounds intersect with visible bounds
+      return paddedBounds.intersects(bounds);
+    });
+  }, [records, visibleBounds]);
+
+  // Notify parent of visible count changes
+  useEffect(() => {
+    if (onVisibleCountChange) {
+      onVisibleCountChange(visibleRecords.length);
+    }
+  }, [visibleRecords.length, onVisibleCountChange]);
 
   // Overlap handling: gather candidates at a point, show chooser if multiple
   const [candidateRecords, setCandidateRecords] = useState<Array<{ record: MapRecord; bounds: L.LatLngBounds; areaSize: number }>>([]);
@@ -216,7 +268,7 @@ const MapInternalLogic: React.FC<MapInternalLogicProps> = ({
     <>
       <MapEvents onBoundsChange={onBoundsChange} isAdding={isAdding} />
 
-      {records.map(record => {
+      {visibleRecords.map(record => {
         const b = toLeafletBounds(record.bounds as any);
         if (!b) return null;
         const isInProgress = (record as any).mapNumberText && String((record as any).mapNumberText).includes('制作中');
@@ -317,6 +369,7 @@ interface MapComponentProps {
   onBoundsChange: (bounds: LatLngBounds | null) => void;
   isAdding: boolean;
   currentMapBounds: LatLngBoundsExpression | null;
+  onVisibleCountChange?: (count: number) => void;
 }
 
 const MapComponent: React.FC<MapComponentProps> = ({ 
@@ -325,7 +378,8 @@ const MapComponent: React.FC<MapComponentProps> = ({
   onSelectRecord,
   onBoundsChange, 
   isAdding, 
-  currentMapBounds
+  currentMapBounds,
+  onVisibleCountChange
 }) => {
   return (
     <MapContainer 
@@ -346,6 +400,7 @@ const MapComponent: React.FC<MapComponentProps> = ({
           onBoundsChange={onBoundsChange} 
           isAdding={isAdding} 
           currentMapBounds={currentMapBounds}
+          onVisibleCountChange={onVisibleCountChange}
         />
     </MapContainer>
   );

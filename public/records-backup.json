@@ -1,0 +1,1163 @@
+{
+  "records": [
+    {
+      "id": "53dc0cbd-1e18-4882-816a-5644d902d68b",
+      "title": "豊科駅",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 36.28219805487736,
+          "lng": 137.89506912231448
+        },
+        "_northEast": {
+          "lat": 36.312358699869826,
+          "lng": 137.93403625488284
+        }
+      },
+      "address": "長野県安曇野市",
+      "regionType": "domestic",
+      "prefecture": "長野県",
+      "mapNumber": 221
+    },
+    {
+      "id": "a394b840-3be4-4498-b19a-337b2ec94c79",
+      "title": "松本IC",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 36.21464022540066,
+          "lng": 137.93326377868655
+        },
+        "_northEast": {
+          "lat": 36.24904940998652,
+          "lng": 137.9763507843018
+        }
+      },
+      "address": "長野県松本市",
+      "regionType": "domestic",
+      "prefecture": "長野県",
+      "mapNumber": 218
+    },
+    {
+      "id": "7f36eb8e-88ba-4964-adbf-9a54c7b832f0",
+      "title": "塩尻",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 36.09738321748593,
+          "lng": 137.94141769409183
+        },
+        "_northEast": {
+          "lat": 36.13066543137375,
+          "lng": 137.98527717590335
+        }
+      },
+      "address": "長野県塩尻市",
+      "regionType": "domestic",
+      "prefecture": "長野県",
+      "mapNumber": 219
+    },
+    {
+      "id": "3507516c-0695-4127-9ae8-791ca205af70",
+      "title": "穂高駅",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 36.32010450578744,
+          "lng": 137.87824630737308
+        },
+        "_northEast": {
+          "lat": 36.35495110643483,
+          "lng": 137.92081832885745
+        }
+      },
+      "address": "長野県安曇野市",
+      "regionType": "domestic",
+      "prefecture": "長野県",
+      "mapNumber": 217
+    },
+    {
+      "id": "5e49fdf3-3b02-4c37-a00a-ef6d5d1abf6c",
+      "title": "女鳥羽川",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 36.23046202271482,
+          "lng": 137.96300411224368
+        },
+        "_northEast": {
+          "lat": 36.2458306817015,
+          "lng": 137.98326015472415
+        }
+      },
+      "address": "長野県松本市",
+      "regionType": "domestic",
+      "prefecture": "長野県",
+      "mapNumber": 216
+    },
+    {
+      "id": "9cedc3d6-0af7-49c0-83bd-a82f81a81902",
+      "title": "諏訪湖",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 36.02161365276841,
+          "lng": 138.04870605468753
+        },
+        "_northEast": {
+          "lat": 36.07712963803842,
+          "lng": 138.11737060546878
+        }
+      },
+      "address": "長野県諏訪市",
+      "regionType": "domestic",
+      "prefecture": "長野県",
+      "mapNumber": 225
+    },
+    {
+      "id": "36b386e7-5490-4e69-98d7-9688b4494119",
+      "title": "飯田",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.49994993951479,
+          "lng": 137.79662132263186
+        },
+        "_northEast": {
+          "lat": 35.53236592368274,
+          "lng": 137.83953666687015
+        }
+      },
+      "address": "長野県飯田市",
+      "regionType": "domestic",
+      "prefecture": "長野県",
+      "mapNumber": 223
+    },
+    {
+      "id": "61b7e81a-fb53-420e-91ab-308c02bb9681",
+      "title": "信州まつもと空港",
+      "createdAt": "2023",
+      "bounds": {
+        "_southWest": {
+          "lat": 36.148132946459825,
+          "lng": 137.9136943817139
+        },
+        "_northEast": {
+          "lat": 36.17848389625919,
+          "lng": 137.97403335571292
+        }
+      },
+      "address": "長野県松本市",
+      "regionType": "domestic",
+      "prefecture": "長野県",
+      "mapNumber": 195
+    },
+    {
+      "id": "033ca63c-dee7-4b1d-8be2-1f406a30ae85",
+      "title": "駒ヶ根駅",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.705262263265745,
+          "lng": 137.93094635009768
+        },
+        "_northEast": {
+          "lat": 35.7428898051826,
+          "lng": 137.97729492187503
+        }
+      },
+      "address": "長野県駒ヶ根市",
+      "regionType": "domestic",
+      "prefecture": "長野県",
+      "mapNumber": 224
+    },
+    {
+      "id": "0e665c7c-d3bb-4a1e-8c60-2f6f7c5e5d06",
+      "title": "松川町",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.587806006729444,
+          "lng": 137.90004730224612
+        },
+        "_northEast": {
+          "lat": 35.62130281838082,
+          "lng": 137.94124603271487
+        }
+      },
+      "address": "長野県下伊那郡",
+      "regionType": "domestic",
+      "prefecture": "長野県",
+      "mapNumber": 220
+    },
+    {
+      "id": "133e7068-8905-4685-b3cc-22fdcdb9fbf4",
+      "title": "善光寺",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 36.64053155496122,
+          "lng": 138.1744480133057
+        },
+        "_northEast": {
+          "lat": 36.662566852903375,
+          "lng": 138.2019138336182
+        }
+      },
+      "address": "長野県長野市",
+      "regionType": "domestic",
+      "prefecture": "長野県",
+      "mapNumber": 215
+    },
+    {
+      "id": "bafbab7d-d2fb-4e15-9043-5594f90c8a8c",
+      "title": "佐久南IC",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 36.220872387539266,
+          "lng": 138.431510925293
+        },
+        "_northEast": {
+          "lat": 36.25271790636629,
+          "lng": 138.47099304199222
+        }
+      },
+      "address": "長野県佐久市",
+      "regionType": "domestic",
+      "prefecture": "長野県",
+      "mapNumber": 222
+    },
+    {
+      "id": "f222dc67-01eb-49c5-98b8-67bebbae30be",
+      "title": "穂高駅",
+      "createdAt": "2020",
+      "bounds": {
+        "_southWest": {
+          "lat": 36.243193302297286,
+          "lng": 137.73358726501468
+        },
+        "_northEast": {
+          "lat": 36.35824136852054,
+          "lng": 137.947717666626
+        }
+      },
+      "address": "長野県安曇野市",
+      "regionType": "domestic",
+      "prefecture": "長野県",
+      "mapNumber": 171
+    },
+    {
+      "id": "caa027ee-b25e-48c7-b69c-f28d63b23418",
+      "title": "松本駅",
+      "createdAt": "2017",
+      "bounds": {
+        "_southWest": {
+          "lat": 36.21761787591265,
+          "lng": 137.95128822326663
+        },
+        "_northEast": {
+          "lat": 36.239773575501886,
+          "lng": 137.97875404357913
+        }
+      },
+      "address": "長野県松本市",
+      "regionType": "domestic",
+      "prefecture": "長野県",
+      "mapNumber": 17
+    },
+    {
+      "id": "af94810c-06a2-40a0-af88-52450b0773d2",
+      "title": "松阪駅",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 34.56354530201782,
+          "lng": 136.50735855102542
+        },
+        "_northEast": {
+          "lat": 34.59463928356551,
+          "lng": 136.5451240539551
+        }
+      },
+      "address": "三重県松阪市",
+      "regionType": "domestic",
+      "prefecture": "三重県",
+      "mapNumber": 207
+    },
+    {
+      "id": "0b71b587-7ec3-4bad-bf11-842e12976b1e",
+      "title": "長良川",
+      "createdAt": "2024",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.4156351263042,
+          "lng": 136.7179870605469
+        },
+        "_northEast": {
+          "lat": 35.454797272575085,
+          "lng": 136.76605224609378
+        }
+      },
+      "address": "岐阜県岐阜市",
+      "regionType": "domestic",
+      "prefecture": "岐阜県",
+      "mapNumber": 203
+    },
+    {
+      "id": "8bc2af77-c974-47ae-84a1-3fb6c1f445c4",
+      "title": "韮崎駅",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.69104278949384,
+          "lng": 138.42103958129886
+        },
+        "_northEast": {
+          "lat": 35.73843117306677,
+          "lng": 138.47940444946292
+        }
+      },
+      "address": "山梨県韮崎市",
+      "regionType": "domestic",
+      "prefecture": "山梨県",
+      "mapNumber": 209
+    },
+    {
+      "id": "35d5f262-ab4f-422f-92b3-b0d7edb62f8f",
+      "title": "塩川",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.6716611896048,
+          "lng": 138.44009399414065
+        },
+        "_northEast": {
+          "lat": 35.71571614090516,
+          "lng": 138.51322174072268
+        }
+      },
+      "address": "山梨県甲斐市",
+      "regionType": "domestic",
+      "prefecture": "山梨県",
+      "mapNumber": 213
+    },
+    {
+      "id": "cae866e3-4c80-4e4a-a1af-8ad09c1ea33f",
+      "title": "双葉水辺公園",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.65129846899613,
+          "lng": 138.4762287139893
+        },
+        "_northEast": {
+          "lat": 35.6895788761946,
+          "lng": 138.5424900054932
+        }
+      },
+      "address": "山梨県甲斐市",
+      "regionType": "domestic",
+      "prefecture": "山梨県",
+      "mapNumber": 211
+    },
+    {
+      "id": "2085638d-fb5b-49b0-9abe-81cb39c98705",
+      "title": "須玉IC",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.756124898233914,
+          "lng": 138.3843040466309
+        },
+        "_northEast": {
+          "lat": 35.80347456219717,
+          "lng": 138.44266891479495
+        }
+      },
+      "address": "山梨県北杜市",
+      "regionType": "domestic",
+      "prefecture": "山梨県",
+      "mapNumber": 210
+    },
+    {
+      "id": "c6667227-8daa-4506-9c10-33a4e72af4a1",
+      "title": "東小金井駅",
+      "createdAt": "2018",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.68232862386472,
+          "lng": 139.50181961059573
+        },
+        "_northEast": {
+          "lat": 35.71975793933433,
+          "lng": 139.54524993896487
+        }
+      },
+      "address": "東京都小金井市",
+      "regionType": "domestic",
+      "prefecture": "東京都",
+      "mapNumber": 96
+    },
+    {
+      "id": "3523cf74-b1e7-448a-a4ae-6277bddffaf4",
+      "title": "江南区",
+      "createdAt": "2017",
+      "bounds": {
+        "_southWest": {
+          "lat": 37.82944639795661,
+          "lng": 139.01035308837893
+        },
+        "_northEast": {
+          "lat": 37.87146577743901,
+          "lng": 139.0635681152344
+        }
+      },
+      "address": "新潟県新潟市",
+      "regionType": "domestic",
+      "prefecture": "新潟県",
+      "mapNumber": 72
+    },
+    {
+      "id": "3c8aca10-edaf-4aff-b7bb-0f6439fd3c18",
+      "title": "奈良駅",
+      "createdAt": "2017",
+      "bounds": {
+        "_southWest": {
+          "lat": 34.67486448442685,
+          "lng": 135.7789993286133
+        },
+        "_northEast": {
+          "lat": 34.70761019826272,
+          "lng": 135.81994056701663
+        }
+      },
+      "address": "奈良県奈良市",
+      "regionType": "domestic",
+      "prefecture": "奈良県",
+      "mapNumber": 5
+    },
+    {
+      "id": "718a6eff-5608-4264-9d1c-ba25ca52246e",
+      "title": "武庫川渓谷",
+      "createdAt": "2017",
+      "bounds": {
+        "_southWest": {
+          "lat": 34.81183018952112,
+          "lng": 135.29251098632815
+        },
+        "_northEast": {
+          "lat": 34.85691844395436,
+          "lng": 135.34744262695315
+        }
+      },
+      "address": "兵庫県宝塚市",
+      "regionType": "domestic",
+      "prefecture": "兵庫県",
+      "mapNumber": 43
+    },
+    {
+      "id": "185a57b3-16a3-400e-825a-70b3c0122ed4",
+      "title": "軽井沢駅",
+      "createdAt": "2023",
+      "bounds": {
+        "_southWest": {
+          "lat": 36.33642350563182,
+          "lng": 138.60883712768558
+        },
+        "_northEast": {
+          "lat": 36.37513287663765,
+          "lng": 138.65690231323245
+        }
+      },
+      "address": "長野県北佐久郡",
+      "regionType": "domestic",
+      "prefecture": "長野県",
+      "mapNumber": 196
+    },
+    {
+      "id": "9140979a-0a36-4edb-8cb0-05ef1bc2bb77",
+      "title": "来島海峡展望台",
+      "createdAt": "2018",
+      "bounds": {
+        "_southWest": {
+          "lat": 34.06005482201255,
+          "lng": 132.88547515869143
+        },
+        "_northEast": {
+          "lat": 34.14533967481939,
+          "lng": 132.9884719848633
+        }
+      },
+      "address": "愛媛県今治市",
+      "regionType": "domestic",
+      "prefecture": "愛媛県",
+      "mapNumber": 118
+    },
+    {
+      "id": "42b4a8a5-41af-4d43-b5b9-359a72322cf6",
+      "title": "桜島",
+      "createdAt": "2018",
+      "bounds": {
+        "_southWest": {
+          "lat": 31.536993361047628,
+          "lng": 130.51689147949222
+        },
+        "_northEast": {
+          "lat": 31.74743807145338,
+          "lng": 130.76408386230472
+        }
+      },
+      "address": "鹿児島県鹿児島市",
+      "regionType": "domestic",
+      "prefecture": "鹿児島県",
+      "mapNumber": 86
+    },
+    {
+      "id": "1b908b72-01dc-41d0-b446-a3bee61b2f8f",
+      "title": "加古川中央JCT",
+      "createdAt": "2021",
+      "bounds": {
+        "_southWest": {
+          "lat": 34.75233231513258,
+          "lng": 134.8396682739258
+        },
+        "_northEast": {
+          "lat": 34.77066561758017,
+          "lng": 134.86198425292972
+        }
+      },
+      "address": "兵庫県加古川市",
+      "regionType": "domestic",
+      "prefecture": "兵庫県",
+      "mapNumber": 186
+    },
+    {
+      "id": "e84b71a4-7c2c-48cd-8c86-3d76ab843baf",
+      "title": "東京総合車輌センター",
+      "createdAt": "2018",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.60588206986124,
+          "lng": 139.72540855407718
+        },
+        "_northEast": {
+          "lat": 35.62402381832769,
+          "lng": 139.74772453308108
+        }
+      },
+      "address": "東京都品川区",
+      "regionType": "domestic",
+      "prefecture": "東京都",
+      "mapNumber": 105
+    },
+    {
+      "id": "16251ced-3438-4a3c-b124-8917ab603e4c",
+      "title": "三沢飛行場",
+      "createdAt": "2021",
+      "bounds": {
+        "_southWest": {
+          "lat": 40.66983219253461,
+          "lng": 141.34408950805667
+        },
+        "_northEast": {
+          "lat": 40.70888114344626,
+          "lng": 141.3955879211426
+        }
+      },
+      "address": "青森県三沢市",
+      "regionType": "domestic",
+      "prefecture": "青森県",
+      "mapNumber": 178
+    },
+    {
+      "id": "0d98bbb3-d576-41e7-879b-81854ddb7c22",
+      "title": "五稜郭",
+      "createdAt": "2022",
+      "bounds": {
+        "_southWest": {
+          "lat": 41.77617651026452,
+          "lng": 140.7273101806641
+        },
+        "_northEast": {
+          "lat": 41.80433406634592,
+          "lng": 140.76507568359378
+        }
+      },
+      "address": "北海道函館市",
+      "regionType": "domestic",
+      "prefecture": "北海道",
+      "mapNumber": 191
+    },
+    {
+      "id": "d774539d-e7cf-4592-8349-de02df0bb931",
+      "title": "江戸川橋駅",
+      "createdAt": "2018",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.69912868360278,
+          "lng": 139.7150230407715
+        },
+        "_northEast": {
+          "lat": 35.717249260994514,
+          "lng": 139.73733901977542
+        }
+      },
+      "address": "東京都文京区",
+      "regionType": "domestic",
+      "prefecture": "東京都",
+      "mapNumber": 217
+    },
+    {
+      "id": "5d912ee0-6763-4fd1-b604-9560f26b4712",
+      "title": "西永福駅",
+      "createdAt": "2021",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.67528688277647,
+          "lng": 139.62601661682132
+        },
+        "_northEast": {
+          "lat": 35.694807014605175,
+          "lng": 139.65004920959475
+        }
+      },
+      "address": "東京都杉並区",
+      "regionType": "domestic",
+      "prefecture": "東京都",
+      "mapNumber": 185
+    },
+    {
+      "id": "40139a22-f4e1-471d-a2ce-6b5c10663b8e",
+      "title": "上野市駅",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 34.751909190863756,
+          "lng": 136.11270904541018
+        },
+        "_northEast": {
+          "lat": 34.78293255344788,
+          "lng": 136.15047454833987
+        }
+      },
+      "address": "三重県伊賀市",
+      "regionType": "domestic",
+      "prefecture": "三重県",
+      "mapNumber": 208
+    },
+    {
+      "id": "0f8afec8-bb3c-443b-80fa-9464ba6ac8bf",
+      "title": "和泉多摩川駅",
+      "createdAt": "2017",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.61844218014193,
+          "lng": 139.56396102905276
+        },
+        "_northEast": {
+          "lat": 35.64076639514692,
+          "lng": 139.59142684936526
+        }
+      },
+      "address": "東京都狛江市",
+      "regionType": "domestic",
+      "prefecture": "東京都",
+      "mapNumber": 22
+    },
+    {
+      "id": "0ee75a3a-4bca-4bea-93e5-a86b884e1437",
+      "title": "和光樹林公園",
+      "createdAt": "2018",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.77012383763866,
+          "lng": 139.59855079650882
+        },
+        "_northEast": {
+          "lat": 35.7924056228434,
+          "lng": 139.62601661682132
+        }
+      },
+      "address": "埼玉県和光市",
+      "regionType": "domestic",
+      "prefecture": "埼玉県",
+      "mapNumber": 105
+    },
+    {
+      "id": "324bb4a8-ebca-4105-85e9-96c71bc7c143",
+      "title": "東京駅",
+      "createdAt": "2018",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.65645937572578,
+          "lng": 139.7282409667969
+        },
+        "_northEast": {
+          "lat": 35.71083783530009,
+          "lng": 139.79295730590823
+        }
+      },
+      "address": "東京都千代田区",
+      "regionType": "domestic",
+      "prefecture": "東京都",
+      "mapNumber": 125
+    },
+    {
+      "id": "8eea8d36-aa15-4300-9709-b634be519d23",
+      "title": "山下公園",
+      "createdAt": "2018",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.43661721633099,
+          "lng": 139.59503173828128
+        },
+        "_northEast": {
+          "lat": 35.49324155007835,
+          "lng": 139.66146469116214
+        }
+      },
+      "address": "神奈川県横浜市",
+      "regionType": "domestic",
+      "prefecture": "神奈川県",
+      "mapNumber": 131
+    },
+    {
+      "id": "b04c979f-5fb0-47bb-b78f-7d1948a3d9e4",
+      "title": "名古屋港",
+      "createdAt": "2017",
+      "bounds": {
+        "_southWest": {
+          "lat": 34.995691265035695,
+          "lng": 136.7564392089844
+        },
+        "_northEast": {
+          "lat": 35.24449753934067,
+          "lng": 137.05101013183597
+        }
+      },
+      "address": "愛知県名古屋市",
+      "regionType": "domestic",
+      "prefecture": "愛知県",
+      "mapNumber": 59
+    },
+    {
+      "id": "c8192100-0c91-4555-8b7b-def1fadb0739",
+      "title": "豊田IC",
+      "createdAt": "2017",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.05135948674818,
+          "lng": 137.10920333862308
+        },
+        "_northEast": {
+          "lat": 35.07946034047984,
+          "lng": 137.1435356140137
+        }
+      },
+      "address": "愛知県豊田市",
+      "regionType": "domestic",
+      "prefecture": "愛知県",
+      "mapNumber": 60
+    },
+    {
+      "id": "5ad25fb7-81d9-4f1b-98a7-d90fbbd51faa",
+      "title": "しまなみ海道",
+      "createdAt": "2022",
+      "bounds": {
+        "_southWest": {
+          "lat": 34.25948651450623,
+          "lng": 132.97920227050784
+        },
+        "_northEast": {
+          "lat": 34.39217900398174,
+          "lng": 133.23051452636722
+        }
+      },
+      "address": "広島県尾道市",
+      "regionType": "domestic",
+      "prefecture": "広島県",
+      "mapNumber": 189
+    },
+    {
+      "id": "0b0ae4b4-5c05-4b41-82b6-d00dddb402c1",
+      "title": "松山駅",
+      "createdAt": "2018",
+      "bounds": {
+        "_southWest": {
+          "lat": 33.83627267902965,
+          "lng": 132.74994850158694
+        },
+        "_northEast": {
+          "lat": 33.849104586460115,
+          "lng": 132.76539802551272
+        }
+      },
+      "address": "愛媛県松山市",
+      "regionType": "domestic",
+      "prefecture": "愛媛県",
+      "mapNumber": 133
+    },
+    {
+      "id": "b175adb8-20fe-4e59-b04e-9094e4ab7f55",
+      "title": "立岩海水浴場",
+      "createdAt": "2018",
+      "bounds": {
+        "_southWest": {
+          "lat": 33.97425699299307,
+          "lng": 132.7684020996094
+        },
+        "_northEast": {
+          "lat": 33.99560783828112,
+          "lng": 132.79415130615237
+        }
+      },
+      "address": "愛媛県松山市",
+      "regionType": "domestic",
+      "prefecture": "愛媛県",
+      "mapNumber": 110
+    },
+    {
+      "id": "5f86ffa1-de52-45fd-9584-725ef8a9a89d",
+      "title": "堀江海水浴場",
+      "createdAt": "2018",
+      "bounds": {
+        "_southWest": {
+          "lat": 33.86414397991938,
+          "lng": 132.69767761230472
+        },
+        "_northEast": {
+          "lat": 33.90974489422525,
+          "lng": 132.75260925292972
+        }
+      },
+      "address": "愛媛県松山市",
+      "regionType": "domestic",
+      "prefecture": "愛媛県",
+      "mapNumber": 115
+    },
+    {
+      "id": "b7a49e6f-991b-4926-92f4-07eec7c2379f",
+      "title": "中島",
+      "createdAt": "2018",
+      "bounds": {
+        "_southWest": {
+          "lat": 33.93453015829903,
+          "lng": 132.5764846801758
+        },
+        "_northEast": {
+          "lat": 34.01965669732604,
+          "lng": 132.6585388183594
+        }
+      },
+      "address": "愛媛県松山市",
+      "regionType": "domestic",
+      "prefecture": "愛媛県",
+      "mapNumber": 137
+    },
+    {
+      "id": "6ec49fa9-b163-435a-bd39-589b1ae19f7d",
+      "title": "興居島",
+      "createdAt": "2018",
+      "bounds": {
+        "_southWest": {
+          "lat": 33.86784996393826,
+          "lng": 132.6530456542969
+        },
+        "_northEast": {
+          "lat": 33.93253620840842,
+          "lng": 132.7017974853516
+        }
+      },
+      "address": "愛媛県松山市",
+      "regionType": "domestic",
+      "prefecture": "愛媛県",
+      "mapNumber": 150
+    },
+    {
+      "id": "45ce231f-6117-4f40-a757-31963aa35938",
+      "title": "松山市駅",
+      "createdAt": "2019",
+      "bounds": {
+        "_southWest": {
+          "lat": 33.82835870897816,
+          "lng": 132.7504634857178
+        },
+        "_northEast": {
+          "lat": 33.85808577503705,
+          "lng": 132.77303695678714
+        }
+      },
+      "address": "愛媛県松山市",
+      "regionType": "domestic",
+      "prefecture": "愛媛県",
+      "mapNumber": 135
+    },
+    {
+      "id": "b90133d1-8c3f-4ee1-9e81-7fab9940cfb0",
+      "title": "昭和記念公園",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.692715800365356,
+          "lng": 139.38131332397464
+        },
+        "_northEast": {
+          "lat": 35.726168647355294,
+          "lng": 139.4225120544434
+        }
+      },
+      "address": "東京都立川市",
+      "regionType": "domestic",
+      "prefecture": "東京都",
+      "mapNumber": 229,
+    },
+    {
+      "id": "1098bc09-fed7-4a19-bc7e-f6a87ce7f283",
+      "title": "能生駅",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 37.05408113619033,
+          "lng": 137.96802520751956
+        },
+        "_northEast": {
+          "lat": 37.125286284966805,
+          "lng": 138.05728912353518
+        }
+      },
+      "address": "新潟県糸魚川市",
+      "regionType": "domestic",
+      "prefecture": "新潟県",
+      "mapNumber": 228
+    },
+    {
+      "id": "e2255665-4e2c-4143-b9e3-a51d64746dcf",
+      "title": "丸太公園",
+      "createdAt": "2018",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.67539146763539,
+          "lng": 139.65017795562747
+        },
+        "_northEast": {
+          "lat": 35.69808314000005,
+          "lng": 139.6762275695801
+        }
+      },
+      "address": "東京都中野区",
+      "regionType": "domestic",
+      "prefecture": "東京都",
+      "mapNumber": 99
+    },
+    {
+      "id": "5945496b-6603-4648-a4f5-fa3229acdf84",
+      "title": "上野駅",
+      "createdAt": "2021",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.70805009803191,
+          "lng": 139.76360321044925
+        },
+        "_northEast": {
+          "lat": 35.726168647355294,
+          "lng": 139.78591918945315
+        }
+      },
+      "address": "東京都台東区",
+      "regionType": "domestic",
+      "prefecture": "東京都",
+      "mapNumber": 182
+    },
+    {
+      "id": "8fcf104d-4cbb-46f6-b857-c62e4cd212e9",
+      "title": "恵比寿島",
+      "createdAt": "2022",
+      "bounds": {
+        "_southWest": {
+          "lat": 34.649025753526985,
+          "lng": 138.9090728759766
+        },
+        "_northEast": {
+          "lat": 34.69589662514323,
+          "lng": 138.99387359619143
+        }
+      },
+      "address": "静岡県下田市",
+      "regionType": "domestic",
+      "prefecture": "静岡県",
+      "mapNumber": 190
+    },
+    {
+      "id": "4c5a614f-d3d5-4383-ad70-e5874638ec9b",
+      "title": "神通川橋梁",
+      "createdAt": "2018",
+      "bounds": {
+        "_southWest": {
+          "lat": 36.68652308122401,
+          "lng": 137.1813011169434
+        },
+        "_northEast": {
+          "lat": 36.71267366048652,
+          "lng": 137.21391677856448
+        }
+      },
+      "address": "富山県富山市",
+      "regionType": "domestic",
+      "prefecture": "富山県",
+      "mapNumber": 116
+    },
+    {
+      "id": "628f0bfd-1b08-4219-bfee-d32fb0b2972d",
+      "title": "彦根城",
+      "createdAt": "2021",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.26580442886754,
+          "lng": 136.23879432678225
+        },
+        "_northEast": {
+          "lat": 35.28423317258411,
+          "lng": 136.27724647521975
+        }
+      },
+      "address": "滋賀県彦根市",
+      "regionType": "domestic",
+      "prefecture": "滋賀県",
+      "mapNumber": 187
+    },
+    {
+      "id": "e7eecd47-4d7c-46b5-b82c-44672d4721f3",
+      "title": "鱒淵",
+      "createdAt": "2017",
+      "bounds": {
+        "_southWest": {
+          "lat": 38.69703256527164,
+          "lng": 141.2495040893555
+        },
+        "_northEast": {
+          "lat": 38.76867343840858,
+          "lng": 141.34820938110354
+        }
+      },
+      "address": "宮城県登米市東和町",
+      "regionType": "domestic",
+      "prefecture": "宮城県",
+      "mapNumber": 6
+    },
+    {
+      "id": "5d2b2c2c-2b73-4d33-8fb9-048002b78aff",
+      "title": "花巻駅",
+      "createdAt": "2021",
+      "bounds": {
+        "_southWest": {
+          "lat": 39.364430487560284,
+          "lng": 141.0989570617676
+        },
+        "_northEast": {
+          "lat": 39.40158111593397,
+          "lng": 141.14702224731448
+        }
+      },
+      "address": "岩手県花巻市",
+      "regionType": "domestic",
+      "prefecture": "岩手県",
+      "mapNumber": 179
+    },
+    {
+      "id": "40250ad6-c29a-401c-92c2-ea6fef56a129",
+      "title": "是川遺跡",
+      "createdAt": "2021",
+      "bounds": {
+        "_southWest": {
+          "lat": 40.44015366986629,
+          "lng": 141.42219543457034
+        },
+        "_northEast": {
+          "lat": 40.60404812057864,
+          "lng": 141.59317016601565
+        }
+      },
+      "address": "青森県八戸市",
+      "regionType": "domestic",
+      "prefecture": "青森県",
+      "mapNumber": 188
+    },
+    {
+      "id": "4032ed56-d38a-44bd-baab-faaca0de754c",
+      "title": "二子玉川駅",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.60022937686696,
+          "lng": 139.59400177001956
+        },
+        "_northEast": {
+          "lat": 35.633720988098574,
+          "lng": 139.6352005004883
+        }
+      },
+      "address": "東京都世田谷区",
+      "regionType": "domestic",
+      "prefecture": "東京都",
+      "mapNumberText": "制作中"
+    },
+    {
+      "id": "7f3b42b1-4409-4914-ac37-2f795a0a53c1",
+      "title": "銚子漁港",
+      "createdAt": "2025",
+      "bounds": {
+        "_southWest": {
+          "lat": 35.67626300279665,
+          "lng": 140.54946899414065
+        },
+        "_northEast": {
+          "lat": 35.943547570924665,
+          "lng": 140.87905883789065
+        }
+      },
+      "address": "千葉県銚子市",
+      "regionType": "domestic",
+      "prefecture": "千葉県",
+      "mapNumberText": "制作中"
+    },
+    {
+      "id": "e5d418db-23d6-4be5-8e5d-f13b3c50a753",
+      "title": "福岡空港",
+      "createdAt": "2018",
+      "bounds": {
+        "_southWest": {
+          "lat": 33.5644270762726,
+          "lng": 130.404109954834
+        },
+        "_northEast": {
+          "lat": 33.610187537328144,
+          "lng": 130.459041595459
+        }
+      },
+      "address": "福岡県福岡市",
+      "regionType": "domestic",
+      "prefecture": "福岡県",
+      "mapNumber": 90
+    },
+    {
+      "id": "073f26a6-1fa9-45a7-a29d-4296b8348cbc",
+      "title": "丹原総合公園",
+      "createdAt": "2019",
+      "bounds": {
+        "_southWest": {
+          "lat": 33.87469135792663,
+          "lng": 133.0258941650391
+        },
+        "_northEast": {
+          "lat": 33.90604072983462,
+          "lng": 133.06365966796878
+        }
+      },
+      "address": "愛媛県西条市",
+      "regionType": "domestic",
+      "prefecture": "愛媛県",
+      "mapNumber": 165
+    }
+  ]
+}

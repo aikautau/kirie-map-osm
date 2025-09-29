@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import L, { type LatLngBounds, type LatLngBoundsExpression } from 'leaflet';
 import MapComponent from './components/MapComponent';
 import Sidebar from './components/Sidebar';
+import { PerformanceMonitor } from './components/PerformanceMonitor';
 import { LOCAL_STORAGE_KEY } from './constants';
 import type { MapRecord } from './types';
 
@@ -12,6 +13,7 @@ const App: React.FC = () => {
   const [isAdding, setIsAdding] = useState<boolean>(false);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [editingRecordId, setEditingRecordId] = useState<string | null>(null);
+  const [visibleRecordsCount, setVisibleRecordsCount] = useState<number>(0);
   const appMode = import.meta.env.VITE_APP_MODE || 'admin';
   const [fromMapSelection, setFromMapSelection] = useState<boolean>(false);
 
@@ -229,6 +231,7 @@ const App: React.FC = () => {
 
   return (
     <div className="relative h-full w-full flex flex-col md:flex-row overflow-hidden">
+      <PerformanceMonitor recordsCount={records.length} visibleCount={visibleRecordsCount} />
       <Sidebar
         records={records}
         activeRecordId={activeRecordId}
@@ -256,6 +259,7 @@ const App: React.FC = () => {
           onBoundsChange={handleBoundsChange}
           isAdding={appMode === 'admin' ? (isAdding || isEditing) : false}
           currentMapBounds={currentMapBounds}
+          onVisibleCountChange={setVisibleRecordsCount}
         />
       </main>
     </div>
