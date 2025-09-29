@@ -231,7 +231,7 @@ const App: React.FC = () => {
 
   return (
     <div className="relative h-full w-full flex flex-col md:flex-row overflow-hidden">
-      <PerformanceMonitor recordsCount={records.length} visibleCount={visibleRecordsCount} />
+      {import.meta.env.DEV && <PerformanceMonitor recordsCount={records.length} visibleCount={visibleRecordsCount} />}
       <Sidebar
         records={records}
         activeRecordId={activeRecordId}
