@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState, useCallback } from 'react';
+import React, { useEffect, useMemo, useState, useCallback, useRef } from 'react';
 import { MapContainer, TileLayer, Rectangle, useMap, useMapEvents } from 'react-leaflet';
 import L, { type LatLngBounds, type LatLngBoundsExpression } from 'leaflet';
 import type { MapRecord } from '../types';
@@ -64,6 +64,7 @@ const RectangleDrawer: React.FC<RectangleDrawerProps> = ({ onBoundsChange }) => 
   const map = useMap();
   const [startPos, setStartPos] = useState<L.LatLng | null>(null);
   const [currentPos, setCurrentPos] = useState<L.LatLng | null>(null);
+  const lastDirectionRef = useRef<{ x: 1 | -1; y: 1 | -1 }>({ x: 1, y: 1 });
   const isDrawing = !!startPos;
 
   useEffect(() => {
@@ -85,21 +86,56 @@ const RectangleDrawer: React.FC<RectangleDrawerProps> = ({ onBoundsChange }) => 
     };
   }, [map, isDrawing]);
 
+  const adjustLatLngForSquare = useCallback(
+    (start: L.LatLng, latlng: L.LatLng, shiftKey: boolean) => {
+      const startPoint = map.latLngToContainerPoint(start);
+      const currentPoint = map.latLngToContainerPoint(latlng);
+      const dx = currentPoint.x - startPoint.x;
+      const dy = currentPoint.y - startPoint.y;
+
+      if (dx !== 0) {
+        lastDirectionRef.current.x = dx > 0 ? 1 : -1;
+      }
+      if (dy !== 0) {
+        lastDirectionRef.current.y = dy > 0 ? 1 : -1;
+      }
+
+      if (!shiftKey || (dx === 0 && dy === 0)) {
+        return latlng;
+      }
+
+      const size = Math.max(Math.abs(dx), Math.abs(dy));
+      const signX = dx !== 0 ? (dx > 0 ? 1 : -1) : lastDirectionRef.current.x;
+      const signY = dy !== 0 ? (dy > 0 ? 1 : -1) : lastDirectionRef.current.y;
+
+      const constrainedPoint = L.point(
+        startPoint.x + signX * size,
+        startPoint.y + signY * size
+      );
+
+      return map.containerPointToLatLng(constrainedPoint);
+    },
+    [map]
+  );
+
   useMapEvents({
     mousedown(e) {
       if ((e.originalEvent.target as HTMLElement).closest('.leaflet-control')) return;
       onBoundsChange(null);
       setStartPos(e.latlng);
       setCurrentPos(e.latlng);
+      lastDirectionRef.current = { x: 1, y: 1 };
     },
     mousemove(e) {
       if (startPos) {
-        setCurrentPos(e.latlng);
+        const adjusted = adjustLatLngForSquare(startPos, e.latlng, e.originalEvent.shiftKey);
+        setCurrentPos(adjusted);
       }
     },
     mouseup(e) {
       if (startPos) {
-        const bounds = L.latLngBounds(startPos, e.latlng);
+        const finalLatLng = adjustLatLngForSquare(startPos, e.latlng, e.originalEvent.shiftKey);
+        const bounds = L.latLngBounds(startPos, finalLatLng);
         onBoundsChange(bounds);
         setStartPos(null);
         setCurrentPos(null);
